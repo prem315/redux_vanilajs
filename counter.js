@@ -1,14 +1,20 @@
 // reducer
-function reducer(state, action){
+function counter(state, action){
+  var nextState = {
+    counter: state.counter
+  }
   switch (action.type) {
     case 'ADD':
-
+        nextState.counter = state.counter + 1;
+        return nextState;
       break;
     case 'MINUS':
-
+        nextState.counter = state.counter - 1;
+        return nextState;
       break;
     case 'RESET':
-
+        nextState.counter = 0;
+        return nextState;
       break;
     default:
       return state;
@@ -23,7 +29,7 @@ var counterEl = document.getElementById('counter');
 // render function
 function render(){
   var state = store.getState();
-  counterEl.innerHTML = state.count.toString();
+  counterEl.innerHTML = state.counter.toString();
 }
 // subscribe render function
 store.subscribe(render);
